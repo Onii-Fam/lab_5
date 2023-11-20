@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">dqb478_lab5</string>
+    <string name="login">Log In</string>
+    <string name="user_prompt_text">Enter your username:</string>
+</resources>
