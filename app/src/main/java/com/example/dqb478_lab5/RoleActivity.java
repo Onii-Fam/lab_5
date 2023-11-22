@@ -16,17 +16,36 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * RoleActivity is responsible for displaying the roles of a logged-in user.
+ * It allows the user to navigate to the details of Act One or Act Two, or to log out.
+ * @author Alfonso Lopez Aquino
+ */
 public class RoleActivity extends AppCompatActivity {
 
+    /**
+     * Initializes the activity, sets up the user interface, and loads user data.
+     * Retrieves the username passed from the previous activity and displays the user's roles.
+     *
+     * @param savedInstanceState Contains the data most recently supplied in onSaveInstanceState(Bundle)
+     *                           if the activity is being re-initialized after previously being shut down.
+     * @author Alfonso Lopez Aquino
+     */
     private TextView textViewUserName;
     private TextView textViewRoles;
     private Button buttonLogout;
     private Button buttonActOne;
     private Button buttonActTwo;
-    private User currentUser; // This will hold the current user's details
-    private List<User> users; // Assuming this list is populated with all users
-
+    private User currentUser;
+    private List<User> users;
+    /**
+     * Initializes the activity, sets up the user interface, and loads user data.
+     * Retrieves the username passed from the previous activity and displays the user's roles.
+     *
+     * @param savedInstanceState Contains the data most recently supplied in onSaveInstanceState(Bundle)
+     *                           if the activity is being re-initialized after previously being shut down.
+     * \@author Alfonso Lopez Aquino
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +57,7 @@ public class RoleActivity extends AppCompatActivity {
         buttonActOne = findViewById(R.id.actOneButton);
         buttonActTwo = findViewById(R.id.actTwoButton);
 
-        users = loadUsers(); // Load users (ideally this should be done once and passed around or stored globally)
+        users = loadUsers(); // Load users
 
         String userName = getIntent().getStringExtra("USER_NAME");
         currentUser = retrieveUser(userName);
@@ -69,6 +88,13 @@ public class RoleActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Retrieves a User object based on the provided username.
+     *
+     * @param userName The username of the user to be retrieved.
+     * @return The User object if found, null otherwise.
+     * @author Alfonso Lopez Aquino
+     */
     private User retrieveUser(String userName) {
         for (User user : users) {
             if (user.getUsername().equals(userName)) {
@@ -77,7 +103,12 @@ public class RoleActivity extends AppCompatActivity {
         }
         return null;
     }
-
+    /**
+     * Displays the real name and roles of the given user.
+     *
+     * @param user The User whose information is to be displayed.
+     * @author Alfonso Lopez Aquino
+     */
     private void displayUserInfo(User user) {
         textViewUserName.setText(user.getRealName());
         StringBuilder rolesBuilder = new StringBuilder();
@@ -86,7 +117,12 @@ public class RoleActivity extends AppCompatActivity {
         }
         textViewRoles.setText(rolesBuilder.toString());
     }
-
+    /**
+     * Navigates to ActActivity to display the scenes of the specified act.
+     *
+     * @param actNumber The act number for which details are to be displayed.
+     * @author Alfonso Lopez Aquino
+     */
     private void navigateToActDetails(int actNumber) {
         // Intent to navigate to the Act Details Activity
         Intent intent = new Intent(RoleActivity.this, ActActivity.class);
@@ -95,12 +131,21 @@ public class RoleActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Logs out the current user and returns to the MainActivity.
+     * @author Alfonso Lopez Aquino
+     */
     private void logout() {
         Intent intent = new Intent(RoleActivity.this, MainActivity.class);
         startActivity(intent);
         finish(); // Close this activity
     }
-
+    /**
+     * Loads all users from the 'users.csv' file located in the assets directory.
+     *
+     * @return A list of User objects parsed from the CSV file.
+     * @author Alfonso Lopez Aquino
+     */
     private List<User> loadUsers() {
         List<User> userList = new ArrayList<>();
         try {
@@ -124,7 +169,6 @@ public class RoleActivity extends AppCompatActivity {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            // Handle exceptions appropriately
         }
         return userList;
     }

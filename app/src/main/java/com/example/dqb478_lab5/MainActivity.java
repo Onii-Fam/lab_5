@@ -1,6 +1,7 @@
 package com.example.dqb478_lab5;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,14 +18,26 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * MainActivity is the entry point of the application.
+ * This activity handles user login by loading user data from a CSV file and validating credentials.
+ * Upon successful login, it navigates to the RoleActivity where user roles are displayed.
+ * @author Alfonso Lopez Aquino
+ */
 public class MainActivity extends AppCompatActivity {
 
     private EditText editTextUsername;
     private EditText editTextPassword;
     private Button buttonLogin;
-    private List<User> users; // This will hold the users from the CSV file
+    private List<User> users;
 
+    /**
+     * Initializes the activity. This method sets up the user interface and loads the users.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down,
+     *                           this contains the most recent data provided by onSaveInstanceState(Bundle).
+     * @author Alfonso Lopez Aquino
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +56,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+    /**
+     * Handles user login. Validates the entered username and password against the loaded users.
+     * If credentials are valid, navigates to the RoleActivity.
+     *  @author Alfonso Lopez Aquino
+     */
     private void login() {
         String username = editTextUsername.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
@@ -60,7 +77,13 @@ public class MainActivity extends AppCompatActivity {
 
         Toast.makeText(MainActivity.this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
     }
-
+    /**
+     * Loads users from the 'users.csv' file in the assets directory.
+     * Each line in the CSV file should contain a username, password, real name, and roles.
+     *
+     * @return List of User objects parsed from the CSV file.
+     * @author Alfonso Lopez Aquino
+     */
     private List<User> loadUsers() {
         List<User> userList = new ArrayList<>();
         try {
@@ -82,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            // Handle exceptions
         }
         return userList;
     }
