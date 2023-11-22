@@ -3,4 +3,7 @@
     <string name="login">Log In</string>
     <string name="user_prompt_text">Enter your username:</string>
     <string name="passphrase">Passphrase:</string>
+    <string name="logout">Logout</string>
+    <string name="act_two">Act II</string>
+    <string name="act_one">Act I</string>
 </resources>
