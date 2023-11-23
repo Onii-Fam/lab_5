@@ -1,5 +1,8 @@
 package com.example.dqb478_lab5;
 
+import static java.lang.Thread.sleep;
+
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
@@ -18,6 +21,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
 /**
  * MainActivity is the entry point of the application.
  * This activity handles user login by loading user data from a CSV file and validating credentials.
@@ -47,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.pass_edit);
         buttonLogin = findViewById(R.id.log_button);
 
-        users = loadUsers(); // Load users from CSV
+        users = loadUsers(this); // Load users from CSV
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,13 +74,13 @@ public class MainActivity extends AppCompatActivity {
             if (user.validate(username, password)) {
                 Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, RoleActivity.class);
-                intent.putExtra("USER_NAME", user.getRealName()); // Passing user's real name
+                intent.putExtra("USER_NAME", user.getUsername()); // Passing username
                 startActivity(intent);
                 return;
             }
         }
 
-        Toast.makeText(MainActivity.this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, "Invalid Username or Password" + username + password, Toast.LENGTH_SHORT).show();
     }
     /**
      * Loads users from the 'users.csv' file in the assets directory.
@@ -84,13 +89,15 @@ public class MainActivity extends AppCompatActivity {
      * @return List of User objects parsed from the CSV file.
      * @author Alfonso Lopez Aquino
      */
-    private List<User> loadUsers() {
+    private List<User> loadUsers(Context context) {
         List<User> userList = new ArrayList<>();
+        AssetManager asset = context.getAssets();
         try {
-            InputStream is = getAssets().open("users.csv");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            InputStream is = asset.open("users.csv");
+            Scanner reader = new Scanner(is);
             String line;
-            while ((line = reader.readLine()) != null) {
+            while (reader.hasNextLine()) {
+                line = reader.nextLine();
                 String[] tokens = line.split(",");
                 if (tokens.length >= 3) {
                     String username = tokens[0].trim();
@@ -100,14 +107,15 @@ public class MainActivity extends AppCompatActivity {
                     for (int i = 3; i < tokens.length; i++) {
                         roles.add(new Role(tokens[i].trim())); // Added trim() here for consistency
                     }
-                    userList.add(new User(username, password, realName, roles));
+                    User temp = new User(username, password, realName, roles);
+                    userList.add(temp);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         return userList;
-    }
+    };
 }
 
 

@@ -1,0 +1,23 @@
+1 - "What'd I Miss?": Jefferson, Burr, Madison, Company
+2 - "Cabinet Battle #1": Washington, Jefferson, Hamilton, Madison
+3 - "Take a Break": Eliza, Philip, Hamilton, Angelica
+4 - "Say No to This": Maria Reynolds, Burr, Hamilton, James Reynolds, Company
+5 - "The Room Where It Happens": Burr, Hamilton, Jefferson, Madison, Company
+6 - "Schuyler Defeated": Philip, Eliza, Hamilton, Burr
+7 - "Cabinet Battle #2": Washington, Jefferson, Hamilton, Madison
+8 - "Washington on Your Side": Burr, Jefferson, Madison, Company
+9 - "One Last Time": Washington, Hamilton, Company
+10 - "I Know Him": King George III
+11 - "The Adams Administration": Burr, Jefferson, Hamilton, Madison, Company
+12 - "We Know": Hamilton, Jefferson, Burr, Madison
+13 - "Hurricane": Hamilton,  Company
+14 - "The Reynolds Pamphlet": Jefferson, Madison, Burr, Hamilton, Angelica, James Reynolds, Company
+15 - "Burn": Eliza
+16 - "Blow Us All Away": Philip, Martha, Dolley, Eacker, Hamilton, Company
+17 - "Stay Alive (Reprise)": Hamilton, Philip, Eliza, Company
+18 - "It's Quiet Uptown": Angelica, Hamilton, Eliza, Company
+19 - "The Election of 1800": Jefferson, Madison, Burr, Hamilton, Company
+20 - "Your Obedient Servant": Burr, Hamilton, Company
+21 - "Best of Wives and Best of Women": Eliza,  Hamilton
+22 - "The World Was Wide Enough": Burr, Hamilton, Company
+23 - "Who Lives, Who Dies, Who Tells Your Story": Eliza,  Company

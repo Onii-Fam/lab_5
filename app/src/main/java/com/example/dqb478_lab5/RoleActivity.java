@@ -1,6 +1,8 @@
 package com.example.dqb478_lab5;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +18,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
 /**
  * RoleActivity is responsible for displaying the roles of a logged-in user.
  * It allows the user to navigate to the details of Act One or Act Two, or to log out.
@@ -57,7 +61,7 @@ public class RoleActivity extends AppCompatActivity {
         buttonActOne = findViewById(R.id.actOneButton);
         buttonActTwo = findViewById(R.id.actTwoButton);
 
-        users = loadUsers(); // Load users
+        users = loadUsers(this); // Load users
 
         String userName = getIntent().getStringExtra("USER_NAME");
         currentUser = retrieveUser(userName);
@@ -146,32 +150,33 @@ public class RoleActivity extends AppCompatActivity {
      * @return A list of User objects parsed from the CSV file.
      * @author Alfonso Lopez Aquino
      */
-    private List<User> loadUsers() {
+    private List<User> loadUsers(Context context) {
         List<User> userList = new ArrayList<>();
+        AssetManager asset = context.getAssets();
         try {
-            InputStream is = getAssets().open("users.csv");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            InputStream is = asset.open("users.csv");
+            Scanner reader = new Scanner(is);
             String line;
-            while ((line = reader.readLine()) != null) {
+            while (reader.hasNextLine()) {
+                line = reader.nextLine();
                 String[] tokens = line.split(",");
                 if (tokens.length >= 3) {
                     String username = tokens[0].trim();
                     String password = tokens[1].trim();
-                    String realName = tokens[2].trim();
+                    String realName = tokens[2].trim(); // Added trim() here too
                     List<Role> roles = new ArrayList<>();
                     for (int i = 3; i < tokens.length; i++) {
-                        roles.add(new Role(tokens[i].trim()));
+                        roles.add(new Role(tokens[i].trim())); // Added trim() here for consistency
                     }
-                    User user = new User(username, password, realName, roles);
-                    user.setRoles(roles);
-                    userList.add(user);
+                    User temp = new User(username, password, realName, roles);
+                    userList.add(temp);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         return userList;
-    }
+    };
 
 
 }

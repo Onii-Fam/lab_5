@@ -1,0 +1,24 @@
+1 - "Alexander Hamilton": Burr, Laurens, Jefferson, Madison, Hamilton, Eliza, Washington, Company
+2 - "Aaron Burr, Sir": Hamilton, Burr, Laurens, Lafayette, Mulligan, Company
+3 - "My Shot": Hamilton, Laurens, Lafayette, Mulligan, Burr, Company
+4 - "The Story of Tonight": Hamilton, Laurens, Mulligan, Lafayette, Company
+5 - "The Schuyler Sisters": Angelica, Eliza, Peggy, Burr, Company
+6 - "Farmer Refuted": Seabury, Hamilton, Burr, Company
+7 - "You'll Be Back": King George III, Company
+8 - "Right Hand Man": Washington, Hamilton, Burr, Company
+9 - "A Winter's Ball": Burr, Hamilton, Company
+10 - "Helpless": Eliza, Company
+11 - "Satisfied": Angelica , Company
+12 - "The Story of Tonight (Reprise)": Laurens, Mulligan, Lafayette, Hamilton, Burr
+13 - "Wait for It": Burr, Company
+14 - "Stay Alive": Hamilton, Washington, Laurens, Lafayette, Mulligan, Lee, Eliza, Angelica, Company
+15 - "Ten Duel Commandments": Laurens, Hamilton, Lee, Burr, Company
+16 - "Meet Me Inside": Hamilton, Burr, Laurens, Washington, Company
+17 - "That Would Be Enough": Eliza , Hamilton
+18 - "Guns and Ships": Burr, Lafayette, Washington, Company
+19 - "History Has Its Eyes on You": Washington, Hamilton, Company
+20 - "Yorktown (The World Turned Upside Down)": Hamilton, Lafayette, Laurens, Mulligan, Washington, Company
+21 - "What Comes Next?": King George III
+22 - "Dear Theodosia": Burr, Hamilton
+23 - "Tomorrow There'll Be More of Us": Laurens, Eliza, Hamilton
+24 - "Non-Stop": Burr, Hamilton, Angelica, Eliza, Washington, Company
