@@ -17,9 +17,10 @@ public class Scene {
      * @param sceneID The unique identifier for the scene.
      * @param title   The title of the scene.
      */
-    public Scene(int sceneID, String title) {
+    public Scene(int sceneID, String title, List<Role> roles) {
         this.sceneID = sceneID;
         this.title = title;
+        this.roles = roles;
     }
 
     /**
@@ -74,5 +75,8 @@ public class Scene {
      */
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+    public String toString() {
+        return sceneID + " - " + title + " - " + roles.toString();
     }
 }

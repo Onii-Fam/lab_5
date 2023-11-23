@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.dqb478_lab5.model.Role;
@@ -130,8 +132,9 @@ public class RoleActivity extends AppCompatActivity {
     private void navigateToActDetails(int actNumber) {
         // Intent to navigate to the Act Details Activity
         Intent intent = new Intent(RoleActivity.this, ActActivity.class);
+        //Toast.makeText(this, "CURRENTUSER:" + currentUser.getUsername(), Toast.LENGTH_SHORT).show();
         intent.putExtra("ACT_NUMBER", actNumber);
-        intent.putExtra("USER_NAME", currentUser.getUsername());
+        intent.putExtra("USER_NAME", currentUser.getUsername().toString());
         startActivity(intent);
     }
 

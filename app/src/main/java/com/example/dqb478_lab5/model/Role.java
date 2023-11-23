@@ -30,7 +30,10 @@ public class Role {
      *
      * @param roleName The name to set for this role.
      */
-      {
+    public void setRoleName(String roleName) {
         this.roleName = roleName;
+    }
+    public String toString() {
+        return roleName;
     }
 }
